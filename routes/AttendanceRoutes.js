@@ -7,6 +7,7 @@ const {
 const { upload } = require("../services/fileUpload");
 const upload_img = require("../middlewares/upload");
 const { punchIn, punchOut, getAttendanceForEmployee, getAttendanceByEmployeeForAdmin, getAttendance, getAttendanceByDate, getLatestAttendance, editAttendanceByID, getAttendanceGeoLatest, downloadAllAttendance, deleteAttendanceByID, getJaipurDealers, addAttendanceByAdmin, getAddedAttendanceByAdmin } = require("../controller/common/AttendanceController");
+
 const router = express.Router();
 
 router.post("/punch-in", upload_img.single("punchInImage"), userAuth, punchIn);
