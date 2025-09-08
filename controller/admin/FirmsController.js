@@ -2,7 +2,7 @@
 const { generateFirmId } = require("../../helpers/firmHelper");
 const ActorTypeHierarchy = require("../../model/ActorTypesHierarchy");
 const Firms = require("../../model/Firms");
-const Metadata = require("../../model/Metadata");
+const MetaData = require("../../model/MetaData");
 const Organization = require("../../model/Organization");
 // const ActorTypesHierarchy = require("../model/ActorTypesHierarchy");
 // const generateFirmId = require("../utils/generateFirmId");
@@ -162,7 +162,7 @@ try {
   const firmsWithUserData = await Promise.all(
     firms.map(async (firm) => {
       // Find users in metadata collection with matching firm_code and attendance true
-      const users = await Metadata.find({ firm_code: firm.code, attendance: true }).select('code');
+      const users = await MetaData.find({ firm_code: firm.code, attendance: true }).select('code');
       
       // Extract user codes and count
       const userCodes = users.map(user => user.code);
