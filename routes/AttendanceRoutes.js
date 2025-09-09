@@ -6,7 +6,7 @@ const {
 } = require("../middlewares/authmiddlewares");
 const { upload } = require("../services/fileUpload");
 const upload_img = require("../middlewares/upload");
-const { punchIn, punchOut, getAttendanceForEmployee, getAttendanceByEmployeeForAdmin, getAttendance, getAttendanceByDate, getLatestAttendance, editAttendanceByID, getAttendanceGeoLatest, downloadAllAttendance, deleteAttendanceByID, getJaipurDealers, addAttendanceByAdmin, getAddedAttendanceByAdmin } = require("../controller/common/AttendanceController");
+const { punchIn, punchOut, getAttendanceForEmployee, getAttendanceByEmployeeForAdmin, getAttendance, getAttendanceByDate, getLatestAttendance, editAttendanceByID, getAttendanceGeoLatest, downloadAllAttendance, deleteAttendanceByID, getJaipurDealers, addAttendanceByAdmin, getAddedAttendanceByAdmin, getAttendanceMatrix } = require("../controller/common/AttendanceController");
 
 const router = express.Router();
 
@@ -47,5 +47,9 @@ router.get("/get-jaipur-dealers", getJaipurDealers);
 router.post("/add-attendance-by-admin", adminOrSuperAdminAuth, addAttendanceByAdmin);
 //get all attendance add by admin
 router.get("/get-all-attendance-add-by-admin", superAdminAuth, getAddedAttendanceByAdmin);
+
+
+// get attendance matrix
+router.get("/admin/attendance-matrix", getAttendanceMatrix);
 
 module.exports = router;
